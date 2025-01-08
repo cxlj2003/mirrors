@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir -p /opt/www/html
-loc=`curl mirrors.ustc.edu.cn | grep filename.*= | awk '{print $NF}'|awk -F "\"" '{print $2}'|uniq`
+loc=`curl -fsSl https://mirrors.ustc.edu.cn | grep filename.*= | awk '{print $NF}'|awk -F "\"" '{print $2}'|uniq`
 cat << EOF >/etc/nginx/conf.d/default.conf
 server
     {
